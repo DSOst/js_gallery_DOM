@@ -4,14 +4,16 @@ const thumbs = document.getElementById('thumbs');
 const largeImg = document.getElementById('largeImg');
 
 thumbs.addEventListener('click', (e) => {
-  e.preventDefault();
-
-  let link = e.target;
+  let link = null;
 
   if (e.target.tagName === 'IMG') {
     link = e.target.closest('a');
   } else if (e.target.tagName === 'A') {
     link = e.target;
+  }
+
+  if (link && link.hasAttribute('href')) {
+    e.preventDefault();
   }
 
   if (link) {
